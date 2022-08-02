@@ -9,7 +9,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController : Controller
     {
         //Loosely coupled
         //naming convention
@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
         [HttpPost("add")]
         public IActionResult Add(Product product)
         {
-            var result = _productService.Add(product);
+            var result = _productService.AddTransactionalTest(product);
             if (result.Success)
             {
                 return Ok(result);
